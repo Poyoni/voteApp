@@ -1,17 +1,12 @@
 import express from 'express';
-import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import Candidate from '../models/Candidate';
 
 const router = express.Router();
 
-router.post('/register', async (req, res) => {
-  const { username, password, isAdmin } = req.body;
-  // בדיקות ואימות
-});
 
-router.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  // התחברות ואימות עם JWT
+router.get('/', async (req, res) => {
+  const candidates = await Candidate.find();
+  res.json(candidates);
 });
 
 export default router;
